@@ -1,0 +1,3 @@
+interface IGetPrompt {
+  query: string;
+}
