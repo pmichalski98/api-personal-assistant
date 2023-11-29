@@ -5,12 +5,9 @@ import { ChatService } from './chat.service';
 export class ChatController {
   constructor(private chatService: ChatService) {}
 
-  @Get()
-  test() {
-    return 'test, halo halo';
-  }
   @Post()
   async getPrompt(@Body() body: IGetPrompt) {
+    console.log(body);
     const chatResponse = await this.chatService.act(body.query);
     return {
       chatResponse,

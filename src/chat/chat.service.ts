@@ -19,7 +19,7 @@ import { currentDate, parseFunctionCall, rephrase } from './todoist/helpers';
 export class ChatService {
   async act(query: string) {
     const model = new ChatOpenAI({
-      modelName: 'gpt-4-0613',
+      modelName: 'gpt-4-1106-preview',
       openAIApiKey: process.env.OPENAI_API_KEY,
     }).bind({
       functions: [
@@ -43,6 +43,7 @@ export class ChatService {
       new HumanMessage(query),
     ]);
     const action = parseFunctionCall(converstaion);
+    console.log(action);
     let response = '';
     if (action) {
       response = await tools[action.name](action.args.tasks);
