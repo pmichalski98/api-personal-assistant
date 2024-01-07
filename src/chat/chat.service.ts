@@ -24,7 +24,6 @@ export class ChatService {
       openAIApiKey: process.env.OPENAI_API_KEY,
       streaming: true,
     });
-    const stream = await model.stream([new HumanMessage(query)]);
-    return stream;
+    return model.stream([new HumanMessage(query)]);
   }
 }
